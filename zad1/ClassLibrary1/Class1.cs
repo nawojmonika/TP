@@ -20,19 +20,20 @@ namespace Biblioteka
         public DateTime DataWydania { get; set; }
         public string Wydawnictwo { get; set; }
         public ICollection<Kategoria> Kategorie { get; set; }
+        public OpisStanu AktualnyStan { get; set; }
+        public ICollection<Zdarzenie> HistoriaWypozyczen { get; set; }
     }
 
     public class OpisStanu
     {
-        public string IdKsiazki { get; set; }
         public Boolean CzyWypozyczona { get; set; }
-        public Wykaz KtoWypozyczyl { get; set; }
-        public DateTime dataWypozyczenia { get; set; }
-        public DateTime DataOddania { get; set; }
     }
 
     public class Zdarzenie
     {
+        public Wykaz KtoWypozyczyl { get; set; }
+        public DateTime DataWypozyczenia { get; set; }
+        public DateTime DataOddania { get; set; }
     }
 
 
