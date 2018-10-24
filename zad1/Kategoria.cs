@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Biblioteka
 {
-
-
-
-
     public enum Kategoria
     {
         Biografia = 0,
@@ -17,4 +12,3 @@ namespace Biblioteka
         Popularnonaukowe = 5
     }
 }
-
