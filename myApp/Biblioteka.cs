@@ -8,7 +8,6 @@ namespace Biblioteka
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
         public string IdKarty { get; set; }
-        public ICollection<Katalog> WypozyczoneKsiazki { get; set; }
         public DateTime DataZalozenia { get; set; }
         public Boolean CzyKontoAktywne { get; set; }
     }
@@ -21,7 +20,6 @@ namespace Biblioteka
         public string Wydawnictwo { get; set; }
         public ICollection<Kategoria> Kategorie { get; set; }
         public OpisStanu AktualnyStan { get; set; }
-        public ICollection<Zdarzenie> HistoriaWypozyczen { get; set; }
     }
 
     public class OpisStanu
@@ -32,10 +30,10 @@ namespace Biblioteka
     public class Zdarzenie
     {
         public Wykaz KtoWypozyczyl { get; set; }
+        public Katalog WypozyczonaKsiazka{ get; set; }
         public DateTime DataWypozyczenia { get; set; }
         public DateTime DataOddania { get; set; }
     }
-
 
     public enum Kategoria
     {
