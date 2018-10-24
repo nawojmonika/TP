@@ -3,15 +3,6 @@ using System.Collections.Generic;
 
 namespace Biblioteka
 {
-    public class Wykaz
-    {
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
-        public string IdKarty { get; set; }
-        public DateTime DataZalozenia { get; set; }
-        public Boolean CzyKontoAktywne { get; set; }
-    }
-
     public class Katalog
     {
         public string IdKsiazki { get; set; }
