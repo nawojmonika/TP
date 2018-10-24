@@ -45,6 +45,9 @@
     <Compile Include="API.cs" />
     <Compile Include="DataContex.cs" />
     <Compile Include="DataRepository.cs" />
+    <Compile Include="OpisStanu.cs" />    
+    <Compile Include="Wykaz.cs" />
+    <Compile Include="Katalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WypelnianieStalymics.cs" />
   </ItemGroup>

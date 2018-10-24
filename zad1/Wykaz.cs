@@ -9,7 +9,7 @@ namespace Biblioteka
             this.Imie = imie;
             this.Nazwisko = nazwisko;
             this.IdKarty = Guid.NewGuid();
-            this.DataZalozenia = DateTime();
+            this.DataZalozenia = new DateTime();
             this.CzyKontoAktywne = true;
         }
         public string Imie { get; set; }
