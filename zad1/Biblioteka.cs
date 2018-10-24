@@ -6,13 +6,6 @@ namespace Biblioteka
 
 
 
-    public class Zdarzenie
-    {
-        public Wykaz KtoWypozyczyl { get; set; }
-        public DateTime DataWypozyczenia { get; set; }
-        public DateTime DataOddania { get; set; }
-    }
-
 
     public enum Kategoria
     {
