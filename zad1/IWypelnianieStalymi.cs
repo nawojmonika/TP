@@ -5,7 +5,7 @@ namespace zad1
 {
     interface IWypelnianieStalymi
     {
-        ICollection<Wykaz> WypelnijWykazy();
+        ICollection<Wykaz> WypelnijCzytelnikow();
         ICollection<Katalog> WypelnijKsiazki();
         ICollection<Zdarzenie> WypelnijZdarzenia();
         ICollection<OpisStanu> WypelnijOpisyStanu();
