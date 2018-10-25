@@ -44,12 +44,14 @@
     <Compile Include="API.cs" />
     <Compile Include="DataContex.cs" />
     <Compile Include="DataRepository.cs" />
-    <Compile Include="OpisStanu.cs" />    
-    <Compile Include="Wykaz.cs" />
-    <Compile Include="Katalog.cs" />
-    <Compile Include="Kategoria.cs" />
+    <Compile Include="Biblioteka\OpisStanu.cs" />
+    <Compile Include="Biblioteka\Wykaz.cs" />
+    <Compile Include="Biblioteka\Katalog.cs" />
+    <Compile Include="Biblioteka\Kategoria.cs" />
+    <Compile Include="IWypelnianieStalymi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WypelnianieStalymics.cs" />
+    <Compile Include="WypelnianieStalymi.cs" />
+    <Compile Include="Biblioteka\Zdarzenie.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
