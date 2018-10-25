@@ -34,22 +34,27 @@ namespace zad1
             this.opisyStanu.Add(new OpisStanu(this.ksiazki[2], OpisStanu.Stan.NieWypozyczona, "Ksiazka zniszczona"));
         }
 
-        public ICollection<Wykaz> WypelnijCzytelnikow()
+        public List<Wykaz> WypelnijCzytelnikow()
         {
             return this.czytelnicy;
         }
 
-        public ICollection<Katalog> WypelnijKsiazki()
+        public Dictionary<string, Katalog> WypelnijKsiazki()
         {
-            return this.ksiazki;
+            Dictionary<string, Katalog> katalog = new Dictionary<string, Katalog>();
+            foreach(Katalog ksiazka in this.ksiazki)
+            {
+                katalog.Add(ksiazka.IdKsiazki.ToString(), ksiazka);
+            }
+            return katalog;
         }
 
-        public ICollection<OpisStanu> WypelnijOpisyStanu()
+        public ObservableCollection<OpisStanu> WypelnijOpisyStanu()
         {
             return this.opisyStanu;
         }
 
-        public ICollection<Zdarzenie> WypelnijZdarzenia()
+        public ObservableCollection<Zdarzenie> WypelnijZdarzenia()
         {
             return this.zdarzenia;
         }

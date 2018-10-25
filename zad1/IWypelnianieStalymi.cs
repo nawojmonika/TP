@@ -1,13 +1,14 @@
 ﻿using Biblioteka;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace zad1
 {
     interface IWypelnianieStalymi
     {
-        ICollection<Wykaz> WypelnijCzytelnikow();
-        ICollection<Katalog> WypelnijKsiazki();
-        ICollection<Zdarzenie> WypelnijZdarzenia();
-        ICollection<OpisStanu> WypelnijOpisyStanu();
+        List<Wykaz> WypelnijCzytelnikow();
+        Dictionary<string, Katalog> WypelnijKsiazki();
+        ObservableCollection<Zdarzenie> WypelnijZdarzenia();
+        ObservableCollection<OpisStanu> WypelnijOpisyStanu();
     }
 }
