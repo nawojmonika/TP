@@ -4,11 +4,16 @@ namespace Biblioteka
     public class OpisStanu
     {
         public enum Stan { Wypozyczona, NieWypozyczona }
-        public OpisStanu(Stan stan)
+        public OpisStanu(Katalog ksiazka, Stan stan, string opis)
         {
             this.ObecnyStan = stan;
+            this.Ksiazka = ksiazka;
+            this.Opis = opis;
         }
-        public Stan ObecnyStan;
-        public Stan StanWypozyczenia { get; set; }
+        private Stan ObecnyStan;
+        private Katalog Ksiazka;
+        private string Opis;
+
+        public Stan StanWypozyczenia { get; set; } 
     }
 }
