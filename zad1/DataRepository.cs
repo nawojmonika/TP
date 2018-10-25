@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace zad1
 {
     class DataRepository

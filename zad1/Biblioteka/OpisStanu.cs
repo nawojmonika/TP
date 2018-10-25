@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Biblioteka
 {
     public class OpisStanu
