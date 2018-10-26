@@ -80,7 +80,28 @@ namespace zad1
             return this.Contex.OpisyStanu;
         }
 
-        //TO DO: Add update methods
+        public void UpdateCzytelnik(Wykaz czytelnik)
+        {
+            int index = this.Contex.Czytelnicy.IndexOf(this.GetCzytelnik(czytelnik.IdKarty));
+            this.Contex.Czytelnicy[index] = czytelnik;
+        }
+
+        public void UpdateKsiazka(Katalog ksiazka)
+        {
+            this.Contex.Ksiazki[ksiazka.IdKsiazki] = ksiazka;
+        }
+
+        public void UpdateZdarzenie(Zdarzenie zdarzenie)
+        {
+            int index = this.Contex.Zdarzenia.IndexOf(this.GetZdarzenie(zdarzenie.IdZdarzenia));
+            this.Contex.Zdarzenia[index] = zdarzenie;
+        }
+
+        public void UpdateOpisStanu(OpisStanu opisStanu)
+        {
+            int index = this.Contex.OpisyStanu.IndexOf(this.GetOpisStanu(opisStanu.IdStanu));
+            this.Contex.OpisyStanu[index] = opisStanu;
+        }
 
         public void RemoveCzytelnik(Guid idKarty)
         {
