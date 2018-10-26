@@ -3,7 +3,7 @@ namespace zad1
 {
     class DataRepository
     {
-        DataRepository(IWypelnianieStalymi wypelniacz)
+        public DataRepository(IWypelnianieStalymi wypelniacz)
         {
             this.Contex = new DataContex();
             this.Contex.Czytelnicy = wypelniacz.WypelnijCzytelnikow();
