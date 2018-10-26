@@ -24,7 +24,7 @@ namespace zad1
 
         public void AddKsiazka(Katalog ksiazka)
         {
-            this.Contex.Ksiazki.Add("to do",ksiazka);
+            this.Contex.Ksiazki.Add(ksiazka.IdKsiazki,ksiazka);
         }
 
         public void AddZdarzenie(Zdarzenie zdarzenie)
@@ -37,6 +37,15 @@ namespace zad1
             this.Contex.OpisyStanu.Add(opisStanu);
         }
 
+        public Wykaz GetCzytelnik(Guid idKarty)
+        {
+            return this.Contex.Czytelnicy.Find(c => c.IdKarty == idKarty);
+        }
 
+        public Katalog GetKsiazka(Guid idKsiazki)
+        {
+            return this.Contex.Ksiazki.TryGetValue()
+        }
+             
     }
 }

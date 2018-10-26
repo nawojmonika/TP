@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Biblioteka;
 
@@ -39,12 +40,12 @@ namespace zad1
             return this.czytelnicy;
         }
 
-        public Dictionary<string, Katalog> WypelnijKsiazki()
+        public Dictionary<Guid, Katalog> WypelnijKsiazki()
         {
-            Dictionary<string, Katalog> katalog = new Dictionary<string, Katalog>();
+            Dictionary<Guid, Katalog> katalog = new Dictionary<Guid, Katalog>();
             foreach(Katalog ksiazka in this.ksiazki)
             {
-                katalog.Add(ksiazka.IdKsiazki.ToString(), ksiazka);
+                katalog.Add(ksiazka.IdKsiazki, ksiazka);
             }
             return katalog;
         }
