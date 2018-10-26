@@ -78,5 +78,45 @@ namespace zad1
         {
             return this.Contex.OpisyStanu;
         }
+
+        //public void UpdateCzytelnik(Guid idKarty)
+        //{
+        //     this.Contex.Czytelnicy.
+        //}
+
+        //public void GetKsiazka(Guid idKsiazki)
+        //{
+        //    return this.Contex.Ksiazki.
+        //}TO DO
+
+        //public void GetZdarzenie(Guid idZdarzenia)
+        //{
+        //    this.Contex.Zdarzenia.
+        //} TO DO
+
+        //public void GetOpisStanu(Guid idStanu)
+        //{
+        //    return this.Contex.OpisyStanu.
+        //} TO do
+
+        public void RemoveCzytelnik(Guid idKarty)
+        {
+            this.Contex.Czytelnicy.RemoveAll(c => c.IdKarty == idKarty);
+        }
+
+        public void RemoveKsiazka(Guid idKsiazki)
+        {
+            this.Contex.Ksiazki.Remove(idKsiazki);
+        }
+
+        //public void RemoveZdarzenie(Guid idZdarzenia)
+        //{
+        //    int index = this.Contex.Zdarzenia.
+        //} to do
+
+        //public void RemoveOpisStanu(Guid idStanu)
+        //{
+        //    this.Contex.OpisyStanu.
+        //}
     }
 }
