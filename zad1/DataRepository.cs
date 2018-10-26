@@ -42,9 +42,14 @@ namespace zad1
             return this.Contex.Czytelnicy.Find(c => c.IdKarty == idKarty);
         }
 
-        public Katalog GetKsiazka(Guid idKsiazki)
+        //public Katalog GetKsiazka(Guid idKsiazki)
+        //{
+        //    return this.Contex.Ksiazki.
+        //}TO DO
+
+        public Zdarzenie GetZdarzenie()
         {
-            return this.Contex.Ksiazki.TryGetValue()
+
         }
              
     }
