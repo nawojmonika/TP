@@ -57,7 +57,7 @@ namespace zad1
 
         public OpisStanu GetOpisStanu(Guid idStanu)
         {
-            return this.Contex.OpisyStanu.Single(s => s.IdStanu == idStanu)
+            return this.Contex.OpisyStanu.Single(s => s.IdStanu == idStanu);
         }
 
         public List<Wykaz> GetAllCzytelnicy()
@@ -80,25 +80,7 @@ namespace zad1
             return this.Contex.OpisyStanu;
         }
 
-        //public void UpdateCzytelnik(Guid idKarty)
-        //{
-        //     this.Contex.Czytelnicy.
-        //}
-
-        //public void GetKsiazka(Guid idKsiazki)
-        //{
-        //    return this.Contex.Ksiazki.
-        //}TO DO
-
-        //public void GetZdarzenie(Guid idZdarzenia)
-        //{
-        //    this.Contex.Zdarzenia.
-        //} TO DO
-
-        //public void GetOpisStanu(Guid idStanu)
-        //{
-        //    return this.Contex.OpisyStanu.
-        //} TO do
+        //TO DO: Add update methods
 
         public void RemoveCzytelnik(Guid idKarty)
         {
