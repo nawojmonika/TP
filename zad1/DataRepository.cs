@@ -110,14 +110,16 @@ namespace zad1
             this.Contex.Ksiazki.Remove(idKsiazki);
         }
 
-        //public void RemoveZdarzenie(Guid idZdarzenia)
-        //{
-        //    int index = this.Contex.Zdarzenia.
-        //} to do
+        public void RemoveZdarzenie(Guid idZdarzenia)
+        {
+            Zdarzenie item  = this.GetZdarzenie(idZdarzenia);
+            this.Contex.Zdarzenia.Remove(item);
+        }
 
-        //public void RemoveOpisStanu(Guid idStanu)
-        //{
-        //    this.Contex.OpisyStanu.
-        //}
+        public void RemoveOpisStanu(Guid idStanu)
+        {
+            OpisStanu item = this.GetOpisStanu(idStanu);
+            this.Contex.OpisyStanu.Remove(item);
+        }
     }
 }
