@@ -1,6 +1,8 @@
 ﻿
 using Biblioteka;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace zad1
 {
@@ -47,10 +49,34 @@ namespace zad1
         //    return this.Contex.Ksiazki.
         //}TO DO
 
-        public Zdarzenie GetZdarzenie()
-        {
+        //public Zdarzenie GetZdarzenie(Guid idZdarzenia)
+        //{
+        //    this.Contex.Zdarzenia.
+        //} TO DO
 
+        //public OpisStanu GetOpisStanu(Guid idStanu)
+        //{
+        //    return this.Contex.OpisyStanu.
+        //} TO do
+
+        public List<Wykaz> GetAllCzytelnicy()
+        {
+            return this.Contex.Czytelnicy;
         }
-             
+
+        public Dictionary<Guid, Katalog> GetAllKsiazki()
+        {
+            return this.Contex.Ksiazki;
+        }
+
+        public ObservableCollection<Zdarzenie> GetAllZdarzenia()
+        {
+            return this.Contex.Zdarzenia;
+        }
+
+        public ObservableCollection<OpisStanu> GetllOpisyStanu()
+        {
+            return this.Contex.OpisyStanu;
+        }
     }
 }
