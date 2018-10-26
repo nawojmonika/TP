@@ -3,6 +3,7 @@ using Biblioteka;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace zad1
 {
@@ -44,20 +45,20 @@ namespace zad1
             return this.Contex.Czytelnicy.Find(c => c.IdKarty == idKarty);
         }
 
-        //public Katalog GetKsiazka(Guid idKsiazki)
-        //{
-        //    return this.Contex.Ksiazki.
-        //}TO DO
+        public Katalog GetKsiazka(Guid idKsiazki)
+        {
+            return this.Contex.Ksiazki[idKsiazki];
+        }
 
-        //public Zdarzenie GetZdarzenie(Guid idZdarzenia)
-        //{
-        //    this.Contex.Zdarzenia.
-        //} TO DO
+        public Zdarzenie GetZdarzenie(Guid idZdarzenia)
+        {
+            return this.Contex.Zdarzenia.Single(z => z.IdZdarzenia == idZdarzenia);
+        }
 
-        //public OpisStanu GetOpisStanu(Guid idStanu)
-        //{
-        //    return this.Contex.OpisyStanu.
-        //} TO do
+        public OpisStanu GetOpisStanu(Guid idStanu)
+        {
+            return this.Contex.OpisyStanu.Single(s => s.IdStanu == idStanu)
+        }
 
         public List<Wykaz> GetAllCzytelnicy()
         {
