@@ -1,13 +1,12 @@
 ﻿
-using Biblioteka;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace zad1
+namespace Biblioteka
 {
-    class DataRepository
+    public class DataRepository
     {
         public DataRepository(IWypelnianieStalymi wypelniacz)
         {

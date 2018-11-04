@@ -1,10 +1,9 @@
-﻿using Biblioteka;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace zad1
-{
+namespace Biblioteka
+ {
     class DataContex
     {
         public List<Wykaz> Czytelnicy { get; set; }

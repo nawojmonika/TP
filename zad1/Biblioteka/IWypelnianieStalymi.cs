@@ -1,11 +1,10 @@
-﻿using Biblioteka;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace zad1
-{
-    interface IWypelnianieStalymi
+namespace Biblioteka
+ {
+    public interface IWypelnianieStalymi
     {
         List<Wykaz> WypelnijCzytelnikow();
         Dictionary<Guid, Katalog> WypelnijKsiazki();
