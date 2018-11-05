@@ -74,7 +74,7 @@ namespace Biblioteka
             return this.Contex.Zdarzenia;
         }
 
-        public ObservableCollection<OpisStanu> GetllOpisyStanu()
+        public ObservableCollection<OpisStanu> GetAllOpisyStanu()
         {
             return this.Contex.OpisyStanu;
         }
