@@ -111,6 +111,79 @@ namespace UnitTestProject1
             dataRepository.AddOpisStanu(OpisStanu1);
             CollectionAssert.AreEqual(OpisyStanowWithNewValues, dataRepository.GetAllOpisyStanu());
         }
+        [TestMethod]
+        public void updateCzytelnikTest()
+        {
+            DataRepository dataRepository = buildDataRepository();
+            var wykazFromDataRepository = dataRepository.GetAllCzytelnicy()[0];
+            wykazFromDataRepository.Imie = Imie1;
+
+            dataRepository.UpdateCzytelnik(wykazFromDataRepository);
+            wykazFromDataRepository = dataRepository.GetAllCzytelnicy()[0];
+            Assert.AreEqual(Imie1, wykazFromDataRepository.Imie);
+        }
+        [TestMethod]
+        public void updateKsiazkaTest()
+        {
+            // To implement. I don't know how to deal with Dictionaries
+            throw new System.Exception("To implement");
+        }
+        [TestMethod]
+        public void updateZdarzenie()
+        {
+            DataRepository dataRepository = buildDataRepository();
+            var zdarzenieFromDataRepository = dataRepository.GetAllZdarzenia()[0];
+            zdarzenieFromDataRepository.KtoWypozyczyl = Wykaz1;
+
+            dataRepository.UpdateZdarzenie(zdarzenieFromDataRepository);
+            zdarzenieFromDataRepository = dataRepository.GetAllZdarzenia()[0];
+            Assert.AreEqual(Wykaz1, zdarzenieFromDataRepository.KtoWypozyczyl);
+        }
+
+        [TestMethod]
+        public void updateZdarzenieTest()
+        {
+            DataRepository dataRepository = buildDataRepository();
+            var opisStanuFromDataRepository = dataRepository.GetAllOpisyStanu()[0];
+            opisStanuFromDataRepository.Ksiazka = Katalog1;
+
+            dataRepository.UpdateOpisStanu(opisStanuFromDataRepository);
+            opisStanuFromDataRepository = dataRepository.GetAllOpisyStanu()[0];
+            Assert.AreEqual(Katalog1, opisStanuFromDataRepository.Ksiazka);
+        }
+        [TestMethod]
+        public void removeCzytelnikTest()
+        {
+            DataRepository dataRepository = buildDataRepository();
+            var wykazFromDataRepository = dataRepository.GetAllCzytelnicy()[0];
+            dataRepository.RemoveCzytelnik(wykazFromDataRepository.IdKarty);
+
+            CollectionAssert.DoesNotContain(dataRepository.GetAllCzytelnicy(), wykazFromDataRepository);
+        }
+        [TestMethod]
+        public void removeKsiazkaTest()
+        {
+            // To implement. I don't know how to deal with Dictionaries
+            throw new System.Exception("To implement");
+        }
+        [TestMethod]
+        public void removeZdarzenieTest()
+        {
+            DataRepository dataRepository = buildDataRepository();
+            var zdarzenieFromDataRepository = dataRepository.GetAllZdarzenia()[0];
+            dataRepository.RemoveZdarzenie(zdarzenieFromDataRepository.IdZdarzenia);
+
+            CollectionAssert.DoesNotContain(dataRepository.GetAllZdarzenia(), zdarzenieFromDataRepository);
+        }
+        [TestMethod]
+        public void removeOpisStanuTest()
+        {
+            DataRepository dataRepository = buildDataRepository();
+            var opisStanuFromDataRepository = dataRepository.GetAllOpisyStanu()[0];
+            dataRepository.RemoveOpisStanu(opisStanuFromDataRepository.IdStanu);
+
+            CollectionAssert.DoesNotContain(dataRepository.GetAllOpisyStanu(), opisStanuFromDataRepository);
+        }
         private DataRepository buildDataRepository()
         {
             return new DataRepository(Wypelniacz);
