@@ -15,6 +15,30 @@ namespace Biblioteka
             this.Contex.Ksiazki = wypelniacz.WypelnijKsiazki();
             this.Contex.Zdarzenia = wypelniacz.WypelnijZdarzenia();
             this.Contex.OpisyStanu = wypelniacz.WypelnijOpisyStanu();
+            this.Contex.OpisyStanu.CollectionChanged += OpisyStanu_CollectionChanged;
+        }
+
+        private void OpisyStanu_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+
+            switch (e.Action)
+            {
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
+                    foreach (var newItem in e.NewItems)
+                    {
+                        Console.WriteLine("New items are: " + ((OpisStanu)newItem).IdStanu);
+                    }
+                    
+                    break;
+
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
+                    foreach (var oldItem in e.OldItems)
+                    {
+                        Console.WriteLine("Old items are: " + ((OpisStanu)oldItem).IdStanu);
+                    }
+                    break;
+
+            }
         }
 
         private DataContex Contex { get; set; }
