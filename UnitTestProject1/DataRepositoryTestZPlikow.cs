@@ -2,6 +2,7 @@
 using Biblioteka;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace UnitTestProject1
 {
@@ -163,8 +164,11 @@ namespace UnitTestProject1
         [TestMethod]
         public void removeKsiazkaTest()
         {
-            // To implement. I don't know how to deal with Dictionaries
-            throw new System.Exception("To implement");
+            DataRepository dataRepository = buildDataRepository();
+            var ksiazka = dataRepository.GetAllKsiazki().First();
+            dataRepository.RemoveKsiazka(ksiazka.Key);
+
+            CollectionAssert.DoesNotContain(dataRepository.GetAllKsiazki(), ksiazka);
         }
         [TestMethod]
         public void removeZdarzenieTest()
