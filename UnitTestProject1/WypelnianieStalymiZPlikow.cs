@@ -19,7 +19,8 @@ namespace UnitTestProject1
         {
             this.czytelnicy = new List<Wykaz>();
             this.ksiazki = new List<Katalog>();
-            using (var rd = new StreamReader(@"C:\Users\ArturDziedziczak\Desktop\TP\czytelnicy.txt"))
+            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            using (var rd = new StreamReader(dir + @"\..\..\..\czytelnicy.txt"))
             {
                 while (!rd.EndOfStream)
                 {
@@ -32,7 +33,7 @@ namespace UnitTestProject1
             }
 
             this.ksiazki = new List<Katalog>();
-            using (var rd = new StreamReader(@"C:\Users\ArturDziedziczak\Desktop\TP\katalogi.txt"))
+            using (var rd = new StreamReader(dir + @"\..\..\..\katalogi.txt"))
             {
                 while (!rd.EndOfStream)
                 {
@@ -56,7 +57,7 @@ namespace UnitTestProject1
             }
 
             this.zdarzenia = new ObservableCollection<Zdarzenie>();
-            using (var rd = new StreamReader(@"C:\Users\ArturDziedziczak\Desktop\TP\zdarzenia.txt"))
+            using (var rd = new StreamReader(dir + @"\..\..\..\zdarzenia.txt"))
             {
                 while (!rd.EndOfStream)
                 {
@@ -80,7 +81,7 @@ namespace UnitTestProject1
             }
 
             this.opisyStanu = new ObservableCollection<OpisStanu>();
-            using (var rd = new StreamReader(@"C:\Users\ArturDziedziczak\Desktop\TP\opisyStanow.txt"))
+            using (var rd = new StreamReader(dir + @"\..\..\..\opisyStanow.txt"))
             {
                 while (!rd.EndOfStream)
                 {
