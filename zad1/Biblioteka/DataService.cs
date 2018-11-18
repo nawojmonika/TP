@@ -49,9 +49,16 @@ namespace Biblioteka
             return zdarzeniePomiedzyDatami;
         }
 
-        public Zdarzenie DodajZdarzenie(Wykaz wypozyczajacy, OpisStanu stan)
+        public Zdarzenie Wypozycz(Wykaz wypozyczajacy, OpisStanu stan)
         {
-            var zdarzenie = new Zdarzenie(wypozyczajacy, new DateTime(), DateTime.Today.AddMonths(1));
+            Zdarzenie zdarzenie = new Wypozyczenie(wypozyczajacy, new DateTime(), DateTime.Today.AddMonths(1));
+            this.dataRepository.AddOpisStanu(stan);
+            this.dataRepository.AddZdarzenie(zdarzenie);
+            return zdarzenie;
+        }
+        public Zdarzenie Oddaj(Wykaz wypozyczajacy, OpisStanu stan)
+        {
+            Zdarzenie zdarzenie = new Oddanie(wypozyczajacy, new DateTime(), DateTime.Today.AddMonths(1));
             this.dataRepository.AddOpisStanu(stan);
             this.dataRepository.AddZdarzenie(zdarzenie);
             return zdarzenie;

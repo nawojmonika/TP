@@ -2,7 +2,7 @@
 
 namespace Biblioteka
 {
-    public class Zdarzenie
+    public abstract class Zdarzenie
     {
         public Zdarzenie(Wykaz ktoWypozyczyl, DateTime dataWypozyczenia, DateTime dataOddania)
         {

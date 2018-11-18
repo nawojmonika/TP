@@ -28,7 +28,7 @@ namespace UnitTestProject1
 
         private static System.DateTime DataWypozyczenia = new System.DateTime(2018,05, 30);
         private static System.DateTime DataOddania = new System.DateTime(2019,05, 30);
-        private static Zdarzenie Zdarzenie1 = new Zdarzenie(Wykaz1, DataWypozyczenia, DataOddania);
+        private static Zdarzenie Zdarzenie1 = new Wypozyczenie(Wykaz1, DataWypozyczenia, DataOddania);
         private static ObservableCollection<Zdarzenie> Zdarzenia1 = Wypelniacz.WypelnijZdarzenia();
 
         private const string opis = "Książka nie oddana, bo nie wypożyczona";
