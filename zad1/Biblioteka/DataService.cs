@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Biblioteka
 {
@@ -16,7 +15,7 @@ namespace Biblioteka
 
         public IEnumerable<Katalog> WszystkeiPozycjeKatalogu()
         {
-            var katalogs = new List<Katalog>();
+            List<Katalog> katalogs = new List<Katalog>();
             foreach(var katalog in this.dataRepository.GetAllKsiazki())
             {
                 katalogs.Add(katalog.Value);
@@ -26,7 +25,7 @@ namespace Biblioteka
 
         public IEnumerable<Zdarzenie> ZdarzeniaDlaElementuWykazu(Wykaz szukanyWykaz)
         {
-            var zdarzeniaDlaWykazu = new List<Zdarzenie>();
+            List<Zdarzenie> zdarzeniaDlaWykazu = new List<Zdarzenie>();
             foreach(Zdarzenie zdarzenie in this.dataRepository.GetAllZdarzenia())
             {
                 if (zdarzenie.KtoWypozyczyl == szukanyWykaz)
@@ -39,7 +38,7 @@ namespace Biblioteka
 
         public IEnumerable<Zdarzenie> ZdarzeniaPomiedzyDatami(DateTime from, DateTime to)
         {
-            var zdarzeniePomiedzyDatami = new List<Zdarzenie>();
+            List<Zdarzenie> zdarzeniePomiedzyDatami = new List<Zdarzenie>();
             foreach(Zdarzenie zdarzenie in this.dataRepository.GetAllZdarzenia())
             {
                 if (zdarzenie.DataWypozyczenia >= from && zdarzenie.DataWypozyczenia <= to) {

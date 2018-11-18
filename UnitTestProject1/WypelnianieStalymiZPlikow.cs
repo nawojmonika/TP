@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Biblioteka;
 using System.IO;
-using System.Xml.Serialization;
-using System.Runtime.Serialization.Json;
 
 namespace UnitTestProject1
 {

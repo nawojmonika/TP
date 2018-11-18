@@ -97,7 +97,7 @@ namespace UnitTestProject1
         {
             DataRepository dataRepository = buildDataRepository();
             CollectionAssert.AreEqual(Zdarzenia1, dataRepository.GetAllZdarzenia());
-            var ZdarzeniaWithNewValues = Wypelniacz.WypelnijZdarzenia();
+            ObservableCollection<Zdarzenie> ZdarzeniaWithNewValues = Wypelniacz.WypelnijZdarzenia();
             ZdarzeniaWithNewValues.Add(Zdarzenie1);
             dataRepository.AddZdarzenie(Zdarzenie1);
             CollectionAssert.AreEqual(ZdarzeniaWithNewValues, dataRepository.GetAllZdarzenia());
@@ -107,7 +107,7 @@ namespace UnitTestProject1
         {
             DataRepository dataRepository = buildDataRepository();
             CollectionAssert.AreEqual(OpisyStanow1, dataRepository.GetAllOpisyStanu());
-            var OpisyStanowWithNewValues = Wypelniacz.WypelnijOpisyStanu();
+            ObservableCollection<OpisStanu> OpisyStanowWithNewValues = Wypelniacz.WypelnijOpisyStanu();
             OpisyStanowWithNewValues.Add(OpisStanu1);
             dataRepository.AddOpisStanu(OpisStanu1);
             CollectionAssert.AreEqual(OpisyStanowWithNewValues, dataRepository.GetAllOpisyStanu());
@@ -116,7 +116,7 @@ namespace UnitTestProject1
         public void updateCzytelnikTest()
         {
             DataRepository dataRepository = buildDataRepository();
-            var wykazFromDataRepository = dataRepository.GetAllCzytelnicy()[0];
+            Wykaz wykazFromDataRepository = dataRepository.GetAllCzytelnicy()[0];
             wykazFromDataRepository.Imie = Imie1;
 
             dataRepository.UpdateCzytelnik(wykazFromDataRepository);
@@ -126,14 +126,19 @@ namespace UnitTestProject1
         [TestMethod]
         public void updateKsiazkaTest()
         {
-            // To implement. I don't know how to deal with Dictionaries
-            throw new System.Exception("To implement");
+            DataRepository dataRepository = buildDataRepository();
+            Dictionary<System.Guid, Katalog> katalog = dataRepository.GetAllKsiazki();
+            KeyValuePair<System.Guid, Katalog> ksiazka = dataRepository.GetAllKsiazki().First();
+            string zmiana = "Zmienione wydawnictwo";
+            katalog[ksiazka.Key].Wydawnictwo = zmiana;
+
+            Assert.AreEqual(zmiana, dataRepository.GetKsiazka(ksiazka.Key).Wydawnictwo);
         }
         [TestMethod]
         public void updateZdarzenie()
         {
             DataRepository dataRepository = buildDataRepository();
-            var zdarzenieFromDataRepository = dataRepository.GetAllZdarzenia()[0];
+            Zdarzenie zdarzenieFromDataRepository = dataRepository.GetAllZdarzenia()[0];
             zdarzenieFromDataRepository.KtoWypozyczyl = Wykaz1;
 
             dataRepository.UpdateZdarzenie(zdarzenieFromDataRepository);
@@ -145,7 +150,7 @@ namespace UnitTestProject1
         public void updateZdarzenieTest()
         {
             DataRepository dataRepository = buildDataRepository();
-            var opisStanuFromDataRepository = dataRepository.GetAllOpisyStanu()[0];
+            OpisStanu opisStanuFromDataRepository = dataRepository.GetAllOpisyStanu()[0];
             opisStanuFromDataRepository.Ksiazka = Katalog1;
 
             dataRepository.UpdateOpisStanu(opisStanuFromDataRepository);
@@ -156,7 +161,7 @@ namespace UnitTestProject1
         public void removeCzytelnikTest()
         {
             DataRepository dataRepository = buildDataRepository();
-            var wykazFromDataRepository = dataRepository.GetAllCzytelnicy()[0];
+            Wykaz wykazFromDataRepository = dataRepository.GetAllCzytelnicy()[0];
             dataRepository.RemoveCzytelnik(wykazFromDataRepository.IdKarty);
 
             CollectionAssert.DoesNotContain(dataRepository.GetAllCzytelnicy(), wykazFromDataRepository);
@@ -165,7 +170,7 @@ namespace UnitTestProject1
         public void removeKsiazkaTest()
         {
             DataRepository dataRepository = buildDataRepository();
-            var ksiazka = dataRepository.GetAllKsiazki().First();
+            KeyValuePair<System.Guid, Katalog> ksiazka = dataRepository.GetAllKsiazki().First();
             dataRepository.RemoveKsiazka(ksiazka.Key);
 
             CollectionAssert.DoesNotContain(dataRepository.GetAllKsiazki(), ksiazka);
@@ -174,7 +179,7 @@ namespace UnitTestProject1
         public void removeZdarzenieTest()
         {
             DataRepository dataRepository = buildDataRepository();
-            var zdarzenieFromDataRepository = dataRepository.GetAllZdarzenia()[0];
+            Zdarzenie zdarzenieFromDataRepository = dataRepository.GetAllZdarzenia()[0];
             dataRepository.RemoveZdarzenie(zdarzenieFromDataRepository.IdZdarzenia);
 
             CollectionAssert.DoesNotContain(dataRepository.GetAllZdarzenia(), zdarzenieFromDataRepository);
@@ -183,7 +188,7 @@ namespace UnitTestProject1
         public void removeOpisStanuTest()
         {
             DataRepository dataRepository = buildDataRepository();
-            var opisStanuFromDataRepository = dataRepository.GetAllOpisyStanu()[0];
+            OpisStanu opisStanuFromDataRepository = dataRepository.GetAllOpisyStanu()[0];
             dataRepository.RemoveOpisStanu(opisStanuFromDataRepository.IdStanu);
 
             CollectionAssert.DoesNotContain(dataRepository.GetAllOpisyStanu(), opisStanuFromDataRepository);
