@@ -27,11 +27,11 @@ namespace UnitTestProject1
             this.ksiazki.Add(new Katalog("Karol Puchalke", new System.DateTime(), "Polskie Ksiazki", new List<Kategoria> { Kategoria.Sensacja }));
 
             this.zdarzenia = new ObservableCollection<Zdarzenie>();
-            this.zdarzenia.Add(new Zdarzenie(this.czytelnicy[0], new System.DateTime(), new System.DateTime()));
-            this.zdarzenia.Add(new Zdarzenie(this.czytelnicy[1], new System.DateTime(), new System.DateTime()));
-            this.zdarzenia.Add(new Zdarzenie(this.czytelnicy[2], new System.DateTime(), new System.DateTime()));
-            this.zdarzenia.Add(new Zdarzenie(this.czytelnicy[3], new System.DateTime(), new System.DateTime()));
-            this.zdarzenia.Add(new Zdarzenie(this.czytelnicy[3], new System.DateTime(), new System.DateTime()));
+            this.zdarzenia.Add(new Wypozyczenie(this.czytelnicy[0], new System.DateTime(), new System.DateTime()));
+            this.zdarzenia.Add(new Wypozyczenie(this.czytelnicy[1], new System.DateTime(), new System.DateTime()));
+            this.zdarzenia.Add(new Wypozyczenie(this.czytelnicy[2], new System.DateTime(), new System.DateTime()));
+            this.zdarzenia.Add(new Oddanie(this.czytelnicy[3], new System.DateTime(), new System.DateTime()));
+            this.zdarzenia.Add(new Oddanie(this.czytelnicy[3], new System.DateTime(), new System.DateTime()));
 
             this.opisyStanu = new ObservableCollection<OpisStanu>();
             this.opisyStanu.Add(new OpisStanu(this.ksiazki[0], OpisStanu.Stan.Wypozyczona, "Tutaj jest opis wypozyczenia"));

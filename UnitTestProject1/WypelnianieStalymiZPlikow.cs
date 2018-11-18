@@ -74,7 +74,7 @@ namespace UnitTestProject1
                     year = Convert.ToInt32(dataOddania[2]);
                     System.DateTime dataOd = new System.DateTime(year, month, day);
 
-                    this.zdarzenia.Add(new Zdarzenie(this.czytelnicy[czytelnikIndex], dataWyp, dataOd));
+                    this.zdarzenia.Add(new Wypozyczenie(this.czytelnicy[czytelnikIndex], dataWyp, dataOd));
                 }
             }
 
