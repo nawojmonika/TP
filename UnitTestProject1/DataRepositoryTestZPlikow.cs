@@ -126,8 +126,13 @@ namespace UnitTestProject1
         [TestMethod]
         public void updateKsiazkaTest()
         {
-            // To implement. I don't know how to deal with Dictionaries
-            throw new System.Exception("To implement");
+            DataRepository dataRepository = buildDataRepository();
+            Dictionary<System.Guid, Katalog> katalog = dataRepository.GetAllKsiazki();
+            KeyValuePair<System.Guid, Katalog> ksiazka = dataRepository.GetAllKsiazki().First();
+            string zmiana = "Zmienione wydawnictwo";
+            katalog[ksiazka.Key].Wydawnictwo = zmiana;
+
+            Assert.AreEqual(zmiana, dataRepository.GetKsiazka(ksiazka.Key).Wydawnictwo);
         }
         [TestMethod]
         public void updateZdarzenie()
