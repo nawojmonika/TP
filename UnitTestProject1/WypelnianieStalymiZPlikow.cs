@@ -87,7 +87,8 @@ namespace UnitTestProject1
                     int ksiazkaIndex = Convert.ToInt32(splits[0]);
                     int stan = Convert.ToInt32(splits[1]);
                     string opis = splits[2];
-                    this.opisyStanu.Add(new OpisStanu(this.ksiazki[ksiazkaIndex], (OpisStanu.Stan)stan, opis));
+                    int indexZdarzenia = Convert.ToInt32(splits[3]);
+                    this.opisyStanu.Add(new OpisStanu(this.ksiazki[ksiazkaIndex], (OpisStanu.Stan)stan, opis, this.zdarzenia[indexZdarzenia]));
                 }
             }
         }

@@ -32,7 +32,7 @@ namespace UnitTestProject1
         private static ObservableCollection<Zdarzenie> Zdarzenia1 = Wypelniacz.WypelnijZdarzenia();
 
         private const string opis = "Książka nie oddana, bo nie wypożyczona";
-        private static OpisStanu OpisStanu1 = new OpisStanu(Katalog1, OpisStanu.Stan.NieWypozyczona, opis);
+        private static OpisStanu OpisStanu1 = new OpisStanu(Katalog1, OpisStanu.Stan.NieWypozyczona, opis, Zdarzenie1);
         private static ObservableCollection<OpisStanu> OpisyStanow1 = Wypelniacz.WypelnijOpisyStanu();
 
 
