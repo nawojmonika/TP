@@ -9,7 +9,11 @@ namespace Repository
         List<User> Users = new List<User>()
         {
           new User() { Id = Guid.NewGuid(), Age = 21, Name = "Jan", Active = true },
-          new User() { Id = Guid.NewGuid(), Age = 22, Name = "Stefan", Active = false }
+          new User() { Id = Guid.NewGuid(), Age = 22, Name = "Monika", Active = false },
+          new User() { Id = Guid.NewGuid(), Age = 23, Name = "Mariuszk", Active = false },
+          new User() { Id = Guid.NewGuid(), Age = 24, Name = "Stefan", Active = false },
+          new User() { Id = Guid.NewGuid(), Age = 25, Name = "Marcin", Active = false },
+          new User() { Id = Guid.NewGuid(), Age = 27, Name = "Kamil", Active = false }
         };
         
 
