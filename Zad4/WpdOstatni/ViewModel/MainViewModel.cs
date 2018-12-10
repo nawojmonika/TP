@@ -7,7 +7,7 @@ using WpdOstatni.MVVMLight;
 
 namespace WpdOstatni.ViewModel
 {
-    class MainViewModel: ViewModelBase
+    public class MainViewModel: ViewModelBase
     {
         #region constructors
         /// <summary>
@@ -139,24 +139,24 @@ namespace WpdOstatni.ViewModel
         private string m_ActionText;
         private ObservableCollection<User> m_Users;
 
-        private void ShowPopupWindow()
+        public void ShowPopupWindow()
         {
             MessageBoxShowDelegate("test", "Button interaction", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void RemoveCurrentUser()
+        public void RemoveCurrentUser()
         {
             DataLayer.removeUser(CurrentUser);
             refreshUsers();
         }
 
-        private void AddNewUser()
+        public void AddNewUser()
         {
             DataLayer.addUser(new User { Name = UserToAdd.Name, Age = UserToAdd.Age, Active = UserToAdd.Active });
             refreshUsers();
         }
 
-        private void UpdateDataUser()
+        public void UpdateDataUser()
         {
             DataLayer.updateUser(CurrentUser);
             refreshUsers();
