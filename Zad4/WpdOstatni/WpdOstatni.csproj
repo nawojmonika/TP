@@ -57,6 +57,8 @@
     </ApplicationDefinition>
     <Compile Include="MVVMLight\RelayCommand.cs" />
     <Compile Include="MVVMLight\ViewModelBase.cs" />
+    <Compile Include="ViewModel\DisplayError.cs" />
+    <Compile Include="ViewModel\ErrorMessageDialog.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

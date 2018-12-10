@@ -17,34 +17,30 @@ namespace Repository
         };
         
 
-        public bool addUser(User user) 
+        public void addUser(User user) 
         {
             user.Id = Guid.NewGuid();
             Users.Add(user);
-            return true;
         }
 
-        public bool removeUser(User user)
+        public void removeUser(User user)
         {
-            if (user != null)
-            {
-                Users.RemoveAll(u => (u.Id == user.Id));
-                return true;
+            if (user == null) {
+                throw new Exception("Cannot remove.");
             }
-            return false;
+            Users.RemoveAll(u => (u.Id == user.Id));
         }
 
-        public bool updateUser(User updateUser)
+        public void updateUser(User updateUser)
         {
-            if (updateUser != null)
-            {
-                User u = Users.Find( user => (user.Id == updateUser.Id));
-                u.Name = updateUser.Name;
-                u.Age = updateUser.Age;
-                u.Active = updateUser.Active;
-                return true;
+            if (updateUser == null) {
+                throw new Exception("Cannot update.");
             }
-            return false;
+
+            User u = Users.Find(user => (user.Id == updateUser.Id));
+            u.Name = updateUser.Name;
+            u.Age = updateUser.Age;
+            u.Active = updateUser.Active;
         }
 
         public List<User> getUsers()

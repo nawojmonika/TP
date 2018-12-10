@@ -7,11 +7,12 @@ using WpdOstatni.MVVMLight;
 
 namespace WpdOstatni.ViewModel
 {
-    public class MainViewModel: ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         #region constructors
         public MainViewModel()
         {
+            this.displayError = new ErrorMessageDialog();
             FetchDataCommend = new RelayCommand(() => DataLayer = new DataRepository());
             RemoveUser = new RelayCommand(RemoveCurrentUser);
             AddUser = new RelayCommand(AddNewUser);
@@ -21,6 +22,8 @@ namespace WpdOstatni.ViewModel
             UserToAdd = new User { Name = "", Age = 0, Active = false };
         }
         #endregion
+
+        DisplayError displayError;
 
         private void refreshUsers()
         {
@@ -45,7 +48,6 @@ namespace WpdOstatni.ViewModel
             set
             {
                 m_CurrentUser = value;
-                DataLayer.updateUser(value);
                 RaisePropertyChanged();
             }
         }
@@ -97,6 +99,8 @@ namespace WpdOstatni.ViewModel
                 m_DataLayer = value; Users = new ObservableCollection<User>(value.getUsers());
             }
         }
+
+        public DisplayError DisplayError { get => displayError; set => displayError = value; }
         #endregion
 
         #region Private stuff
@@ -107,9 +111,17 @@ namespace WpdOstatni.ViewModel
 
         public void RemoveCurrentUser()
         {
-            DataLayer.removeUser(CurrentUser);
+            try
+            {
+                DataLayer.removeUser(CurrentUser);
+            }
+            catch (Exception error)
+            {
+                this.displayError.PresentError(error.Message);
+            }
             refreshUsers();
         }
+
 
         public void AddNewUser()
         {
@@ -119,7 +131,14 @@ namespace WpdOstatni.ViewModel
 
         public void UpdateDataUser()
         {
-            DataLayer.updateUser(CurrentUser);
+            try
+            {
+                DataLayer.updateUser(CurrentUser);
+            }
+            catch (Exception error)
+            {
+                this.displayError.PresentError(error.Message);
+            }
             refreshUsers();
         }
 
