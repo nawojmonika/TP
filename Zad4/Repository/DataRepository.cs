@@ -8,12 +8,12 @@ namespace Repository
     {
         List<User> Users = new List<User>()
         {
-          new User() { Id = Guid.NewGuid(), Age = 21, Name = "Jan", Active = true },
-          new User() { Id = Guid.NewGuid(), Age = 22, Name = "Monika", Active = false },
-          new User() { Id = Guid.NewGuid(), Age = 23, Name = "Mariuszk", Active = false },
-          new User() { Id = Guid.NewGuid(), Age = 24, Name = "Stefan", Active = false },
-          new User() { Id = Guid.NewGuid(), Age = 25, Name = "Marcin", Active = false },
-          new User() { Id = Guid.NewGuid(), Age = 27, Name = "Kamil", Active = false }
+          new User{ Id = Guid.NewGuid(), Age = 21, Name = "Jan", Active = true },
+          new User{ Id = Guid.NewGuid(), Age = 22, Name = "Monika", Active = false },
+          new User{ Id = Guid.NewGuid(), Age = 23, Name = "Mariuszk", Active = false },
+          new User{ Id = Guid.NewGuid(), Age = 24, Name = "Stefan", Active = false },
+          new User{ Id = Guid.NewGuid(), Age = 25, Name = "Marcin", Active = false },
+          new User{ Id = Guid.NewGuid(), Age = 27, Name = "Kamil", Active = false }
         };
         
 
@@ -26,17 +26,25 @@ namespace Repository
 
         public bool removeUser(User user)
         {
-            Users.RemoveAll(u => (u.Id == user.Id));
-            return true;
+            if (user != null)
+            {
+                Users.RemoveAll(u => (u.Id == user.Id));
+                return true;
+            }
+            return false;
         }
 
         public bool updateUser(User updateUser)
         {
-            User u = Users.Find( user => (user.Id == updateUser.Id));
-            u.Name = updateUser.Name;
-            u.Age = updateUser.Age;
-            u.Active = updateUser.Active;
-            return true;
+            if (updateUser != null)
+            {
+                User u = Users.Find( user => (user.Id == updateUser.Id));
+                u.Name = updateUser.Name;
+                u.Age = updateUser.Age;
+                u.Active = updateUser.Active;
+                return true;
+            }
+            return false;
         }
 
         public List<User> getUsers()

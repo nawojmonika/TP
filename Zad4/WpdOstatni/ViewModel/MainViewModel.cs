@@ -10,18 +10,12 @@ namespace WpdOstatni.ViewModel
     public class MainViewModel: ViewModelBase
     {
         #region constructors
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
         public MainViewModel()
         {
             FetchDataCommend = new RelayCommand(() => DataLayer = new DataRepository());
-            DisplayTextCommand = new RelayCommand(ShowPopupWindow, () => !string.IsNullOrEmpty(m_ActionText));
-            RemoveUser = new RelayCommand(RemoveCurrentUser, () => !string.IsNullOrEmpty(m_ActionText));
-            AddUser = new RelayCommand(AddNewUser, () => !string.IsNullOrEmpty(m_ActionText));
-            UpdateUser = new RelayCommand(UpdateDataUser, () => !string.IsNullOrEmpty(m_ActionText));
-            // RemoveUser = new RelayCommand(RemoveCurrentUser);
-            m_ActionText = "Text to be displayed on the popup";
+            RemoveUser = new RelayCommand(RemoveCurrentUser);
+            AddUser = new RelayCommand(AddNewUser);
+            UpdateUser = new RelayCommand(UpdateDataUser);
             DataLayer = new DataRepository();
             refreshUsers();
             UserToAdd = new User { Name = "", Age = 0, Active = false };
@@ -51,8 +45,8 @@ namespace WpdOstatni.ViewModel
             set
             {
                 m_CurrentUser = value;
+                DataLayer.updateUser(value);
                 RaisePropertyChanged();
-                DataLayer.updateUser(CurrentUser);
             }
         }
 
@@ -68,22 +62,6 @@ namespace WpdOstatni.ViewModel
                 m_UserToAdd = value;
                 RaisePropertyChanged();
             }
-        }
-
-        public string ActionText
-        {
-            get { return m_ActionText; }
-            set
-            {
-                m_ActionText = value;
-                DisplayTextCommand.RaiseCanExecuteChanged();
-                RaisePropertyChanged();
-            }
-        }
-        public RelayCommand DisplayTextCommand
-        {
-            get;
-            private set;
         }
 
         public RelayCommand RemoveUser
@@ -102,9 +80,7 @@ namespace WpdOstatni.ViewModel
             get;
             set;
         }
-        /// <summary>
-        /// Gets the commend responsible to fetch data.
-        /// </summary>
+
         public RelayCommand FetchDataCommend
         {
             get; private set;
@@ -113,15 +89,6 @@ namespace WpdOstatni.ViewModel
         #endregion
 
         #region Unit test instrumentation
-        /// <summary>
-        /// Gets or sets the message box show delegate.
-        /// </summary>
-        /// <remarks>
-        /// It is to be used by unit test to override default popup. Limited access ability is addressed by explicate allowing unit test assembly to access internals 
-        /// using <see cref="System.Runtime.CompilerServices.InternalsVisibleToAttribute"/>.
-        /// </remarks>
-        /// <value>The message box show delegate.</value>
-        public Func<string, string, MessageBoxButton, MessageBoxImage, MessageBoxResult> MessageBoxShowDelegate { get; set; } = MessageBox.Show;
         public IDataRepository DataLayer
         {
             get { return m_DataLayer; }
@@ -136,13 +103,7 @@ namespace WpdOstatni.ViewModel
         private IDataRepository m_DataLayer;
         private User m_CurrentUser;
         private User m_UserToAdd;
-        private string m_ActionText;
         private ObservableCollection<User> m_Users;
-
-        public void ShowPopupWindow()
-        {
-            MessageBoxShowDelegate("test", "Button interaction", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
 
         public void RemoveCurrentUser()
         {
