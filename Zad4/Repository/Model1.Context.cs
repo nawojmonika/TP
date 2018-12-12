@@ -13,10 +13,10 @@ namespace Repository
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database1Entities : DbContext
+    public partial class ProjektEntities2 : DbContext
     {
-        public Database1Entities()
-            : base("name=Database1Entities")
+        public ProjektEntities2()
+            : base("name=ProjektEntities2")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
