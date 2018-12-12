@@ -4,9 +4,9 @@ namespace Repository
 {
     public interface IDataRepository
     {
-        void addUser(User addUser);
-        void removeUser(User addUser);
-        void updateUser(User updateUser);
-        List<User> getUsers();
+        void AddUser(User addUser);
+        void RemoveUser(User addUser);
+        void UpdateUser(User updateUser);
+        List<User> GetUsers();
     }
 }

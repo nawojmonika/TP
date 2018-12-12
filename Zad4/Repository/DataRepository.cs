@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository
 {
@@ -15,43 +16,41 @@ namespace Repository
           new User{  Age = 25, Name = "Marcin", Active = false },
           new User{  Age = 27, Name = "Kamil", Active = false }
         };
-        
 
-        public void addUser(User user) 
+        public void AddUser(User user) 
         {
-            Users.Add(user);
+            ProjektEntities2 db = new ProjektEntities2();
+            db.Users.Add(user);
+            db.SaveChanges();
         }
 
-        public void removeUser(User user)
+        public void RemoveUser(User user)
         {
             if (user == null) {
                 throw new Exception("Cannot remove.");
             }
-            Users.RemoveAll(u => (u.Id == user.Id));
+            ProjektEntities2 db = new ProjektEntities2();
+            db.Users.Remove(user);
+            db.SaveChanges();
         }
 
-        public void updateUser(User updateUser)
+        public void UpdateUser(User updateUser)
         {
             if (updateUser == null) {
                 throw new Exception("Cannot update.");
             }
-
-            User u = Users.Find(user => (user.Id == updateUser.Id));
-            u.Name = updateUser.Name;
-            u.Age = updateUser.Age;
-            u.Active = updateUser.Active;
+            ProjektEntities2 db = new ProjektEntities2();
+            User user =  db.Users.Find(updateUser.Id);
+            user.Name = updateUser.Name;
+            user.Age = updateUser.Age;
+            user.Active = updateUser.Active;
+            db.SaveChanges();
         }
 
-        public List<User> getUsers()
+        public List<User> GetUsers()
         {
-            return Users;
-        }
-
-        public List<Users> getU()
-        {
-            var user = new ProjektEntities2();
-            var toSelect = from u in user.Users select u;
-            return toSelect;
+            ProjektEntities2 db = new ProjektEntities2();
+            return db.Users.ToList();
         }
     }
 }

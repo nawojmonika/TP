@@ -27,7 +27,7 @@ namespace WpdOstatni.ViewModel
 
         private void refreshUsers()
         {
-            Users = new ObservableCollection<User>(DataLayer.getUsers());
+            Users = new ObservableCollection<User>(DataLayer.GetUsers());
         }
         #region ViewModel API
         public ObservableCollection<User> Users
@@ -96,7 +96,7 @@ namespace WpdOstatni.ViewModel
             get { return m_DataLayer; }
             set
             {
-                m_DataLayer = value; Users = new ObservableCollection<User>(value.getUsers());
+                m_DataLayer = value; Users = new ObservableCollection<User>(value.GetUsers());
             }
         }
 
@@ -113,7 +113,7 @@ namespace WpdOstatni.ViewModel
         {
             try
             {
-                DataLayer.removeUser(CurrentUser);
+                DataLayer.RemoveUser(CurrentUser);
             }
             catch (Exception error)
             {
@@ -125,7 +125,7 @@ namespace WpdOstatni.ViewModel
 
         public void AddNewUser()
         {
-            DataLayer.addUser(new User { Name = UserToAdd.Name, Age = UserToAdd.Age, Active = UserToAdd.Active });
+            DataLayer.AddUser(new User { Name = UserToAdd.Name, Age = UserToAdd.Age, Active = UserToAdd.Active });
             refreshUsers();
         }
 
@@ -133,7 +133,7 @@ namespace WpdOstatni.ViewModel
         {
             try
             {
-                DataLayer.updateUser(CurrentUser);
+                DataLayer.UpdateUser(CurrentUser);
             }
             catch (Exception error)
             {
