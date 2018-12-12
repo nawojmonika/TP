@@ -4,19 +4,8 @@ using System.Collections.Generic;
 
 namespace Repository
 {
-    public class DataRepository : IDataRepository
+    public class DatabaseRepo : IDataRepository
     {
-        List<User> Users = new List<User>()
-        {
-          new User{ Id = Guid.NewGuid(), Age = 21, Name = "Jan", Active = true },
-          new User{ Id = Guid.NewGuid(), Age = 22, Name = "Monika", Active = false },
-          new User{ Id = Guid.NewGuid(), Age = 23, Name = "Mariuszk", Active = false },
-          new User{ Id = Guid.NewGuid(), Age = 24, Name = "Stefan", Active = false },
-          new User{ Id = Guid.NewGuid(), Age = 25, Name = "Marcin", Active = false },
-          new User{ Id = Guid.NewGuid(), Age = 27, Name = "Kamil", Active = false }
-        };
-        
-
         public void addUser(User user) 
         {
             user.Id = Guid.NewGuid();
@@ -45,14 +34,8 @@ namespace Repository
 
         public List<User> getUsers()
         {
-            return Users;
-        }
-
-        public List<Users> getU()
-        {
-            var user = new Database3Entities();
-            var toSelect = from u in user.Users select u;
-            return toSelect;
+            DataClasses1DataContext context = new DataClasses1DataContext();
+            var t = from u in context.User select u;
         }
     }
 }

@@ -44,5 +44,12 @@ namespace UnitTestProject1
             var users = dataRepository.getUsers();
             Assert.AreEqual(users[users.Count - 1].Name, newUserName);
         }
+
+        [TestMethod]
+        public void getUTest()
+        {
+            IDataRepository dataRepository = new DataRepository();
+            var u = dataRepository.getU`
+        }
     }
 }
