@@ -12,7 +12,7 @@ namespace Repository
         
         public void AddUser(User user) 
         {
-            LINQ_to_SQL.User u = new LINQ_to_SQL.User { Age = user.Age, Name = user.Name };
+            LINQ_to_SQL.User u = new LINQ_to_SQL.User { Age = user.Age.ToString(), Name = user.Name };
             _context.User.InsertOnSubmit(u);
             _context.SubmitChanges();
         }
