@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="UsersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="User">
+    <Type Name="User">
+      <Column Member="Id" AutoSync="Never" Type="System.Guid" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Member="Name" Type="System.String" CanBeNull="false" />
+      <Column Member="Age" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

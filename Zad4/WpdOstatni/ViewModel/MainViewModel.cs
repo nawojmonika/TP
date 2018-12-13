@@ -1,5 +1,6 @@
 ﻿
 using Repository;
+using Repository.LINQ_to_SQL;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace WpdOstatni.ViewModel
             UpdateUser = new RelayCommand(UpdateDataUser);
             DataLayer = new DataRepository();
             refreshUsers();
-            UserToAdd = new User { Name = "", Age = 0, Active = false };
+            UserToAdd = new User { Name = "", Age = "0" };
         }
         #endregion
 
@@ -125,7 +126,7 @@ namespace WpdOstatni.ViewModel
 
         public void AddNewUser()
         {
-            DataLayer.AddUser(new User { Name = UserToAdd.Name, Age = UserToAdd.Age, Active = UserToAdd.Active });
+            DataLayer.AddUser(new User { Name = UserToAdd.Name, Age = UserToAdd.Age });
             refreshUsers();
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Repository.LINQ_to_SQL;
+using System.Collections.Generic;
 
 namespace Repository
 {
