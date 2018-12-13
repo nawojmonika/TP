@@ -24,6 +24,7 @@ namespace Repository
             }
             var userFetch = (from u in _context.User where u.Id == user.Id select u).First();
             _context.User.DeleteOnSubmit(userFetch);
+            _context.SubmitChanges();
         }
 
         public void UpdateUser(User updateUser)
