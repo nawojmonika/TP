@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Repository;
+using Repository.LINQ_to_SQL;
 using WpdOstatni.ViewModel;
 
 namespace UnitTestProject1
@@ -19,10 +20,10 @@ namespace UnitTestProject1
         {
             MainViewModel mvm = new MainViewModel();
             mvm.DisplayError = new DebugDisplayError();
-            mvm.CurrentUser = mvm.DataLayer.getUsers()[0];
-            int dataLayerSize = mvm.DataLayer.getUsers().Count;
+            mvm.CurrentUser = mvm.DataLayer.GetUsers()[0];
+            int dataLayerSize = mvm.DataLayer.GetUsers().Count;
             mvm.RemoveCurrentUser();
-            Assert.IsTrue(--dataLayerSize == mvm.DataLayer.getUsers().Count);
+            Assert.IsTrue(--dataLayerSize == mvm.DataLayer.GetUsers().Count);
         }
 
         [TestMethod]
@@ -31,7 +32,7 @@ namespace UnitTestProject1
         {
             MainViewModel mvm = new MainViewModel();
             mvm.DisplayError = new DebugDisplayError();
-            int dataLayerSize = mvm.DataLayer.getUsers().Count;
+            int dataLayerSize = mvm.DataLayer.GetUsers().Count;
             mvm.RemoveCurrentUser();
         }
 
@@ -39,10 +40,10 @@ namespace UnitTestProject1
         public void AddUserTest()
         {
             MainViewModel mvm = new MainViewModel();
-            mvm.UserToAdd = new User{ Age = 23, Name = "Mariuszk", Active = false };
-            int dataLayerSize = mvm.DataLayer.getUsers().Count;
+            mvm.UserToAdd = new User{ Age = "23", Name = "Mariuszk" };
+            int dataLayerSize = mvm.DataLayer.GetUsers().Count;
             mvm.AddNewUser();
-            Assert.IsTrue(++dataLayerSize == mvm.DataLayer.getUsers().Count);
+            Assert.IsTrue(++dataLayerSize == mvm.DataLayer.GetUsers().Count);
         }
 
         [TestMethod]
@@ -50,12 +51,12 @@ namespace UnitTestProject1
         {
             MainViewModel mvm = new MainViewModel();
             mvm.DisplayError = new DebugDisplayError();
-            var userToUpdate = mvm.DataLayer.getUsers()[0];
+            var userToUpdate = mvm.DataLayer.GetUsers()[0];
             const string newName = "newName";
             userToUpdate.Name = newName;
             mvm.CurrentUser = userToUpdate;
             mvm.UpdateDataUser();
-            userToUpdate = mvm.DataLayer.getUsers()[0];
+            userToUpdate = mvm.DataLayer.GetUsers()[0];
             Assert.AreEqual(userToUpdate.Name, newName);
         }
 
@@ -65,11 +66,11 @@ namespace UnitTestProject1
         {
             MainViewModel mvm = new MainViewModel();
             mvm.DisplayError = new DebugDisplayError();
-            var userToUpdate = mvm.DataLayer.getUsers()[0];
+            var userToUpdate = mvm.DataLayer.GetUsers()[0];
             const string newName = "newName";
             userToUpdate.Name = newName;
             mvm.UpdateDataUser();
-            userToUpdate = mvm.DataLayer.getUsers()[0];
+            userToUpdate = mvm.DataLayer.GetUsers()[0];
             Assert.AreEqual(userToUpdate.Name, newName);
         }
     }
